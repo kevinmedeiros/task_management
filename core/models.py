@@ -43,3 +43,17 @@ class User(AbstractBaseUser):
 
     def __str__(self):              # __unicode__ on Python 2
         return self.email
+
+
+# pep8 CamelCase
+class GroupTask(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=200)
+
+
+class Task(models.Model):
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=200)
+    date_created = models.DateTimeField(auto_created=True)
+    date_updated = models.DateTimeField(auto_now_add=True)
+    group_task = models.ForeignKey(GroupTask)
