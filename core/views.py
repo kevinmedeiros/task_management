@@ -14,7 +14,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('')
+            return redirect('home/')
 
     else:
         form = UserCreationForm()
@@ -31,5 +31,5 @@ class TaskViewSet(viewsets.ModelViewSet):
 
 class TaskGroupViewSet(viewsets.ModelViewSet):
 
-    queryset = GroupTask.objects.all()
+    queryset = GroupTask.objects.all().order_by('-name')
     serializer_class = GroupTaskSerializer
