@@ -15,12 +15,10 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('home/')
-
-    else:
-        form = UserCreationForm()
-
-        args = {'form': form}
-        return render(request, 'registration/reg_form.html', args)
+        else:
+            form = UserCreationForm()
+            args = {'form': form}
+            return render(request, 'registration/reg_form.html', args)
 
 
 class TaskViewSet(viewsets.ModelViewSet):
